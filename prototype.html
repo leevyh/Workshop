@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dealabs - Ne ratez plus jamais une bonne affaire ! Découvrez les meilleurs deals, codes promo et réductions sur tous vos produits préférés. Communauté de chasseurs de bonnes affaires." />
   <title>Dealabs - Prototype Workshop</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="navbar.css" />
@@ -51,9 +53,9 @@
   </header>
 
   <!-- Liste des deals -->
-  <main>
-    <section class="categories-section">
-      <h2><span>Catégories</span> de produits</h2>
+  <main role="main" aria-label="Contenu principal">
+    <section class="categories-section" aria-labelledby="categories-heading">
+      <h2 id="categories-heading"><span>Catégories</span> de produits</h2>
       <div class="categories-container"></div>
 
       <script>
@@ -90,10 +92,21 @@
             const card = document.createElement("a");
             card.classList.add("category-card");
             card.href = `#${cat.label.toLowerCase()}`;
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Voir les deals de la catégorie ${cat.label}`);
             card.innerHTML = `
-                                <img src="${cat.img}" alt="${cat.alt}">
+                                <img src="${cat.img}" alt="">
                                 <span>${cat.label}</span>
                             `;
+
+            // Gestion clavier
+            card.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+              }
+            });
             container.appendChild(card);
           });
         }
@@ -101,9 +114,9 @@
         window.addEventListener("DOMContentLoaded", loadCategories);
       </script>
     </section>
-    <section class="trend-section">
+    <section class="trend-section" aria-labelledby="trends-heading">
       <h2 class="trend-title">Les <span>Tendances</span></h2>
-      <div class="slider" id="slider" role="list"></div>
+      <div class="slider" id="slider" role="region" aria-label="Carrousel des deals en tendance"></div>
 
       <script>
         const trend = [
@@ -169,32 +182,43 @@
 
         function renderTrends(items) {
           slider.innerHTML = "";
-          items.forEach((t) => {
+          items.forEach((t, index) => {
             const article = document.createElement("article");
             article.className = "trend-card";
             article.tabIndex = 0;
-            article.setAttribute("role", "listitem");
+            article.setAttribute("aria-label", `Tendance ${index + 1}: ${t.title} - ${t.rightprice}`);
+            article.setAttribute("aria-describedby", `trend-desc-${index}`);
 
             const oldPriceHtml = t.oldprice
-              ? `<span class="old-price">${t.oldprice}</span>`
+              ? `<span class="old-price" aria-label="Ancien prix">${t.oldprice}</span>`
               : "";
 
             article.innerHTML = `
-                            <img src="${t.img}" alt="${t.alt}">
+                            <img src="${t.img}" alt="" role="presentation">
                             <div class="trend-content">
                                 <div class="trend-info">
                                     <h3>${t.title}</h3>
-                                    <p>${t.desc}</p>
+                                    <p id="trend-desc-${index}">${t.desc}</p>
                                 </div>
-                                <div class="price">
-                                    <span class="current-price">${t.rightprice}</span>
+                                <div class="price" aria-label="Informations prix">
+                                    <span class="current-price" aria-label="Prix actuel">${t.rightprice}</span>
                                     ${oldPriceHtml}
                                 </div>
                             </div>
                             <div class="trend-actions">
-                                <a class="btn-primary btn-rounded" href="${t.href || '#'}">En savoir plus</a>
+                                <button class="btn-primary btn-rounded" aria-label="En savoir plus sur ${t.title}">En savoir plus</button>
                             </div>
                         `;
+
+            // Gestion du clavier pour les cartes de tendance
+            article.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const button = article.querySelector('button');
+                if (button) button.click();
+              }
+            });
+
             slider.appendChild(article);
           });
         }
@@ -202,17 +226,51 @@
 
         const scrollAmount = 280;
 
-        // déplacement clavier (gauche/droite) pour accessibilité
+        // Navigation clavier pour le slider
         slider.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            if (e.key === 'ArrowLeft') slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            const focusedCard = document.activeElement;
+            const cards = Array.from(slider.querySelectorAll('.trend-card'));
+            const currentIndex = cards.indexOf(focusedCard);
+            
+            switch(e.key) {
+              case 'ArrowRight':
+                e.preventDefault();
+                if (currentIndex < cards.length - 1) {
+                  cards[currentIndex + 1].focus();
+                } else {
+                  slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+                break;
+              case 'ArrowLeft':
+                e.preventDefault();
+                if (currentIndex > 0) {
+                  cards[currentIndex - 1].focus();
+                } else {
+                  slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+                break;
+              case 'Home':
+                e.preventDefault();
+                if (cards.length > 0) {
+                  cards[0].focus();
+                  slider.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+                break;
+              case 'End':
+                e.preventDefault();
+                if (cards.length > 0) {
+                  cards[cards.length - 1].focus();
+                  slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+                }
+                break;
+            }
         });
       </script>
     </section>
 
-    <section class="deals-section">
+    <section class="deals-section" aria-labelledby="deals-heading">
       <h2>Tous les <span>Deals</span></h2>
-      <div class="deals-container"></div>
+      <div class="deals-container" role="list" aria-label="Liste de tous les deals"></div>
 
       <script>
         const dealsData = [
@@ -282,9 +340,11 @@
             const originalText = copyBtn.textContent;
             copyBtn.textContent = 'Copié!';
             copyBtn.classList.add('copied');
+            copyBtn.setAttribute('aria-label', 'Code promo copié dans le presse-papiers');
             setTimeout(() => {
               copyBtn.textContent = originalText;
               copyBtn.classList.remove('copied');
+              copyBtn.setAttribute('aria-label', `Copier le code promo ${code}`);
             }, 2000);
           });
         }
@@ -301,11 +361,24 @@
             button.style.transform = 'scale(1)';
           }, 150);
         }
+ 
+        // Fonction pour gérer les actions des boutons (commentaires, partager, enregistrer)
+        function handleActionButton(button, action) {
+          // Animation visuelle
+          button.style.transform = 'scale(1.1)';
+          setTimeout(() => {
+            button.style.transform = 'scale(1)';
+          }, 150);
+        }
+
         function loadDeals() {
           const container = document.querySelector(".deals-container");
-          dealsData.forEach((deal) => {
+          dealsData.forEach((deal, dealIndex) => {
             const card = document.createElement("div");
             card.classList.add("deal-card");
+            card.setAttribute('role', 'listitem');
+            card.setAttribute('aria-label', `Deal: ${deal.title} - ${deal.currentPrice}`);
+            card.setAttribute('aria-describedby', `deal-desc-${dealIndex}`);
             
             // Action (code promo ou bouton voir le deal)
             const actionSection = deal.promoCode 
@@ -322,8 +395,8 @@
               `;
                 
             card.innerHTML = `
-              <div class="deal-image">
-                  <img src="${deal.img}" alt="${deal.alt}">
+              <div class="deal-image" aria-hidden="true">
+                  <img src="${deal.img}" alt="" role="presentation">
               </div>
               <div class="deal-content">
                   <div class="deal-header">
@@ -351,8 +424,29 @@
                   </div>
                   <p class="deal-desc">${deal.desc}</p>
                   <div class="deal-footer">
-                    <span class="posted-by">Partagé par <strong>${deal.postedBy}</strong></span>
-                    ${actionSection}
+                    <div class="deal-footer-left">
+                      <span class="posted-by">Partagé par <strong>${deal.postedBy}</strong></span>
+                    </div>
+                    <div class="deal-footer-right">
+                      <div class="deal-actions" role="group" aria-label="Actions du deal">
+                        <button class="action-btn" title="Commentaires" aria-label="Voir les commentaires" onclick="handleActionButton(this, 'commentaires')">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                        <button class="action-btn" title="Partager" aria-label="Partager ce deal" onclick="handleActionButton(this, 'partage')">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 5.18669 15.0129 5.37001 15.0378 5.54932L8.6832 9.14638C8.08885 8.45428 7.20883 8 6.22222 8C4.45182 8 3 9.34315 3 11C3 12.6569 4.45182 14 6.22222 14C7.20883 14 8.08885 13.5457 8.6832 12.8536L15.0378 16.4507C15.0129 16.63 15 16.8133 15 17C15 18.6569 16.3431 20 18 20C19.6569 20 21 18.6569 21 17C21 15.3431 19.6569 14 18 14C17.0118 14 16.1318 14.4543 15.5374 15.1464L9.18285 11.5493C9.20771 11.37 9.22056 11.1867 9.22056 11C9.22056 10.8133 9.20771 10.63 9.18285 10.4507L15.5374 6.85362C16.1318 7.54572 17.0118 8 18 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                        <button class="action-btn" title="Enregistrer" aria-label="Enregistrer ce deal" onclick="handleActionButton(this, 'sauvegarde')">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                      ${actionSection}
+                    </div>
                   </div>
               </div>
             `;

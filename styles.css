@@ -15,10 +15,6 @@
   margin-bottom: 1rem;
 }
 
-.hero p {
-  font-size: 1.2rem;
-}
-
 /* Buttons */
 .btn-primary:focus {
   outline: 2px solid #00b8d4;
@@ -211,11 +207,6 @@
 
 /* Responsive : petits écrans */
 @media (max-width: 768px) {
-  .categories-grid1,
-  .categories-grid2 {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
-
   .category-card img {
     max-width: 120px;
   }
@@ -402,8 +393,52 @@
 .deal-footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   margin-top: auto;
+}
+
+.deal-footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.deal-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deal-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background: #f0f0f0;
+  color: #00b8d4;
+}
+
+.action-btn:focus {
+  outline: 2px solid #00b8d4;
+  outline-offset: 2px;
+}
+
+.action-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 .posted-by {
