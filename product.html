@@ -226,45 +226,8 @@
         </div>
     </footer>
 
-    <script>
-        // Fonction pour gérer les votes
-        function vote(button, direction) {
-            const scoreElement = button.parentElement.querySelector('.deal-score');
-            const currentScore = parseInt(scoreElement.textContent.match(/\d+/)[0]);
-            const newScore = currentScore + direction;
-            scoreElement.textContent = `${newScore}°`;
-            // Effet visuel temporaire
-            button.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 150);
-        }
-
-        // Fonction pour gérer les actions des boutons (partager, enregistrer)
-        function handleActionButton(button, action) {
-            // Animation visuelle
-            button.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 150);
-        }
-
-        function toggleFooter() {
-            const footer = document.getElementById('footer');
-            const footerContent = document.getElementById('footer-content');
-            const arrow = document.querySelector('.arrow-up');
-
-            footer.classList.toggle('expanded');
-
-            if (footer.classList.contains('expanded')) {
-                arrow.textContent = '↓';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                arrow.textContent = '↑';
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
+    <!-- Scripts -->
+    <script src="shared-functions.js"></script>
 
 </body>
 
