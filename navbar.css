@@ -1,0 +1,151 @@
+/* Polices et reset */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.5;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.search-form {
+  position: absolute;
+  justify-self: anchor-center;
+  width: calc(100% - 600px);
+  flex: 1 1 300px;
+  max-width: none;
+  min-width: 50px;
+}
+
+.search-wrapper {
+  width: 100%;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+}
+
+.clear-btn:hover,
+.clear-btn:focus {
+  color: #333;
+  outline: 2px solid #00b8d4;
+  outline-offset: 2px;
+}
+
+.nav-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+}
+
+.nav-buttons .text {
+  display: inline;
+}
+
+.nav-buttons .icon {
+  display: inline-block;
+}
+
+/* Sur petits écrans : cacher le texte */
+@media (max-width: 700px) {
+  .nav-buttons .text {
+    display: none;
+  }
+
+  .btn-publish,
+  .btn-login {
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+}
+
+.btn-publish {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #00b8d4;
+  background-color: transparent;
+  color: #00b8d4;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-publish:hover,
+.btn-publish:focus {
+  background-color: rgba(0, 184, 212, 0.1);
+  outline: 2px solid #00b8d4;
+  outline-offset: 2px;
+}
+
+.btn-login {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #007a99;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-login:hover,
+.btn-login:focus {
+  background-color: #005f7a;
+  outline: 2px solid #00b8d4;
+  outline-offset: 2px;
+}
+
+.icon {
+  font-size: 1rem;
+}
