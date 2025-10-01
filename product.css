@@ -172,3 +172,107 @@
     font-size: 12px;
     color: #555;
 }
+
+.price-history {
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.price-history h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.price-history h2 span {
+    color: #00b8d4;
+}
+
+.price-history img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.recommend {
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.recommend h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.recommend h2 span {
+    color: #00b8d4;
+}
+
+/* Grille horizontale */
+.recommend-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.recommend-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-width: 200px;
+    max-width: 220px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.recommend-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-body h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-body p {
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}
+
+.prices {
+    margin-top: auto;
+    font-size: 14px;
+}
+
+.price {
+    color: #e60023;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 6px;
+    font-size: 13px;
+}
+
+.discount {
+    margin-left: 6px;
+    color: green;
+    font-weight: bold;
+}
