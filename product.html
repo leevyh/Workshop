@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dealabs - Page produit</title>
+
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="product.css" />
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="prototype.html" class="logo" aria-label="Accueil Dealabs">
+            <img src="images/dealabs_logo+txt.png" height="30" alt="Dealabs" class="logo-img" />
+        </a>
+
+        <!-- Barre de recherche -->
+        <form class="search-form" role="search" aria-label="Recherche">
+            <label for="search" class="visually-hidden">Rechercher</label>
+            <div class="search-wrapper">
+                <input type="text" id="search" placeholder="Rechercher un deal…" aria-label="Recherche" />
+                <button type="button" class="clear-btn" aria-label="Effacer la recherche">
+                    &times;
+                </button>
+            </div>
+        </form>
+
+        <!-- Boutons -->
+        <div class="nav-buttons">
+            <button class="btn-publish">
+                <span class="icon">+</span>
+                <span class="text">Poster</span>
+            </button>
+            <button class="btn-login">
+                <span class="text">Se connecter</span>
+                <span class="icon">
+                    <img src="icons/register.png" height="18" alt="Register" class="register-logo" />
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="deal-page">
+        <!-- Colonne gauche -->
+        <section class="deal-left">
+            <div class="deal-card">
+                <img src="./images/deal7.jpg" alt="Produit" class="deal-img">
+                <div class="deal-info">
+                    <div class="deal-meta">Publié il y a 20 heures</div>
+                    <h1 class="deal-title">Pack Console Nintendo Switch 2 + Légendes Pokémon Z-A</h1>
+                    <div class="deal-pricing">
+                        <span class="deal-price">469€</span>
+                        <span class="deal-old-price">499€</span>
+                        <span class="deal-discount">-6%</span>
+                    </div>
+                    <div class="deal-shop">🚚 Gratuit · Disponible chez <strong>E.Leclerc</strong></div>
+                    <a href="#" class="deal-button">Voir le deal</a>
+                </div>
+            </div>
+
+            <section class="deal-description">
+                <h2>Description</h2>
+                <p>Adipisicing aliqua aliquip irure laboris adipisicing ex do eu nisi sit...</p>
+                <p>Voluptate proident aliquip nostrud veniam...</p>
+            </section>
+        </section>
+
+        <!-- Colonne droite -->
+        <aside class="deal-comments">
+            <h2>Vos <span>commentaires</span></h2>
+            <div class="comment-box">
+                <input type="text" placeholder="Vous avez la parole…" />
+            </div>
+            <p class="comment-count">25 commentaires triés par <a href="#">Les plus utiles d'abord</a></p>
+
+            <div class="comment">
+                <img src="./images/nike.jpg" class="avatar" alt="avatar">
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="author">Alpha38</span>
+                        <span class="time">il y a 19h et 45 min</span>
+                    </div>
+                    <p>Adipisicing aliqua aliquip irure laboris adipisicing ex do eu nisi sit...</p>
+                    <div class="comment-actions">
+                        <a href="#">J’aime</a> · <a href="#">Répondre</a>
+                        <span class="votes">👍 6 👎 2</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <section class="price-history">
+        <h2>Variation du <span>prix</span></h2>
+        <img src="./images/prix.png" alt="Historique du prix">
+    </section>
+
+    <section class="recommend">
+        <h2>Vous <span>aimeriez aussi</span></h2>
+        <div class="recommend-grid">
+            <div class="recommend-card">
+                <img src="images/deal1.jpg" alt="Smartphone en promotion">
+                <div class="card-body">
+                    <h3>Smartphone -39%</h3>
+                    <p>[Unidays] Smartphone 6,7" Samsung Galaxy S25 Plus - RAM 12 Go, 256 Go</p>
+                    <div class="prices">
+                        <span class="price">711,55€</span>
+                        <span class="old-price">1172,05€</span>
+                        <span class="discount">-39%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommend-card">
+                <img src="images/deal2.jpg" alt="Télévision 4K">
+                <div class="card-body">
+                    <h3>Ecran PC -42%</h3>
+                    <p>Ecran PC 27" Lenovo Legion R27qe - 180 Hz, QHD</p>
+                    <div class="prices">
+                        <span class="price">149,99€</span>
+                        <span class="old-price">259,99€</span>
+                        <span class="discount">-42%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommend-card">
+                <img src="images/deal3.jpg" alt="Montre">
+                <div class="card-body">
+                    <h3>Montre -30%</h3>
+                    <p>Montre Tissot T-Classic Gentleman, acier argenté - edora-bijouterie.fr</p>
+                    <div class="prices">
+                        <span class="price">332,50€</span>
+                        <span class="old-price">475€</span>
+                        <span class="discount">-30%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommend-card">
+                <img src="images/deal4.jpg" alt="Casque audio">
+                <div class="card-body">
+                    <h3>Casque audio -23%</h3>
+                    <p>Casque audio sans fil Sony Bluetooth à réduction de bruit WH-CH720N</p>
+                    <div class="prices">
+                        <span class="price">61,99€</span>
+                        <span class="old-price">80€</span>
+                        <span class="discount">-23%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommend-card">
+                <img src="images/deal5.jpg" alt="Chaussures running">
+                <div class="card-body">
+                    <h3>Chaussures running -50%</h3>
+                    <p>Chaussures de running New balance Propel V4 - du 40 au 46.5</p>
+                    <div class="prices">
+                        <span class="price">65€</span>
+                        <span class="old-price">130€</span>
+                        <span class="discount">-50%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommend-card">
+                <img src="images/deal6.png" alt="Parc d'attractions">
+                <div class="card-body">
+                    <h3>Parc d'attraction -15%</h3>
+                    <p>[Lidl+] 15% de réduction sur les billets Liberté Flex au Parc Astérix</p>
+                    <div class="prices">
+                        <span class="price">-15%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+        <div class="footer-toggle" onclick="toggleFooter()">
+            <span class="arrow-up">↑</span>
+        </div>
+        <div class="footer-content" id="footer-content">
+            <div class="footer-info">
+                <p>© 2025 Dealabs – Prototype workshop</p>
+                <div class="footer-links">
+                    <a href="#">À propos</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Conditions d'utilisation</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFooter() {
+            const footer = document.getElementById('footer');
+            const footerContent = document.getElementById('footer-content');
+            const arrow = document.querySelector('.arrow-up');
+
+            footer.classList.toggle('expanded');
+
+            if (footer.classList.contains('expanded')) {
+                arrow.textContent = '↓';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.textContent = '↑';
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

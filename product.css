@@ -1,0 +1,278 @@
+/* Layout principal */
+.deal-page {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+/* ----------- Partie gauche ----------- */
+.deal-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.deal-img {
+    width: 260px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.deal-info {
+    flex: 1;
+}
+
+.deal-meta {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.deal-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.deal-pricing {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.deal-price {
+    color: #e60023;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.deal-old-price {
+    text-decoration: line-through;
+    margin-left: 8px;
+    color: #888;
+}
+
+.deal-discount {
+    margin-left: 8px;
+    color: green;
+    font-weight: bold;
+}
+
+.deal-shop {
+    margin: 12px 0;
+    font-size: 14px;
+    color: #444;
+}
+
+.deal-button {
+    display: inline-block;
+    background: #00b8d4;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.deal-button:hover {
+    background: #00b8d4;
+}
+
+.deal-description {
+    margin-top: 30px;
+}
+
+.deal-description h2 {
+    color: #00b8d4;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* ----------- Partie droite (commentaires) ----------- */
+.deal-comments {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.deal-comments h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.deal-comments h2 span {
+    color: #00b8d4;
+}
+
+.comment-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.comment-count {
+    font-size: 14px;
+    color: #555;
+    margin: 15px 0;
+}
+
+.comment {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.comment .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.comment-content {
+    background: #f8f9fa;
+    padding: 10px 12px;
+    border-radius: 8px;
+    flex: 1;
+}
+
+.comment-header {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.comment-header .author {
+    font-weight: bold;
+    color: #222;
+}
+
+.comment-actions {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #444;
+}
+
+.comment-actions a {
+    color: #00b8d4;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.comment-actions .votes {
+    float: right;
+    font-size: 12px;
+    color: #555;
+}
+
+.price-history {
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.price-history h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.price-history h2 span {
+    color: #00b8d4;
+}
+
+.price-history img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.recommend {
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.recommend h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.recommend h2 span {
+    color: #00b8d4;
+}
+
+/* Grille horizontale */
+.recommend-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.recommend-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-width: 200px;
+    max-width: 220px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.recommend-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-body h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-body p {
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}
+
+.prices {
+    margin-top: auto;
+    font-size: 14px;
+}
+
+.price {
+    color: #e60023;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 6px;
+    font-size: 13px;
+}
+
+.discount {
+    margin-left: 6px;
+    color: green;
+    font-weight: bold;
+}
