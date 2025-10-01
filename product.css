@@ -1,4 +1,4 @@
-/* Layout principal */
+/* Layout principal - spécifique à la page produit */
 .deal-page {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -8,83 +8,11 @@
     font-family: Arial, sans-serif;
 }
 
-/* ----------- Partie gauche ----------- */
-.deal-card {
-    display: flex;
-    gap: 20px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
+/* ----------- Partie gauche - styles spécifiques ----------- */
 .deal-img {
-    width: 260px;
-    border-radius: 8px;
-    object-fit: cover;
+    place-self: anchor-center;
 }
-
-.deal-info {
-    flex: 1;
-}
-
-.deal-meta {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 8px;
-}
-
-.deal-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
-    line-height: 1.4;
-}
-
-.deal-pricing {
-    font-size: 18px;
-    margin: 8px 0;
-}
-
-.deal-price {
-    color: #e60023;
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.deal-old-price {
-    text-decoration: line-through;
-    margin-left: 8px;
-    color: #888;
-}
-
-.deal-discount {
-    margin-left: 8px;
-    color: green;
-    font-weight: bold;
-}
-
-.deal-shop {
-    margin: 12px 0;
-    font-size: 14px;
-    color: #444;
-}
-
-.deal-button {
-    display: inline-block;
-    background: #00b8d4;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-
-.deal-button:hover {
-    background: #00b8d4;
-}
-
+/* Styles spécifiques à la page produit */
 .deal-description {
     margin-top: 30px;
 }

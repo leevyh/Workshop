@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="footer.css" />
     <link rel="stylesheet" href="product.css" />
+    <link rel="stylesheet" href="deal-card.css" />
 </head>
 
 <body>
@@ -50,15 +51,44 @@
             <div class="deal-card">
                 <img src="./images/deal7.jpg" alt="Produit" class="deal-img">
                 <div class="deal-info">
-                    <div class="deal-meta">Publié il y a 20 heures</div>
+                    <div class="deal-header">
+                        <div class="vote-container">
+                            <button class="vote-btn downvote" onclick="vote(this, -1)" title="Voter négatif">-</button>
+                            <span class="deal-score">469°</span>
+                            <button class="vote-btn upvote" onclick="vote(this, 1)" title="Voter positif">+</button>
+                        </div>
+                        <span class="deal-time">Publié il y a 20 heures</span>
+                    </div>
                     <h1 class="deal-title">Pack Console Nintendo Switch 2 + Légendes Pokémon Z-A</h1>
                     <div class="deal-pricing">
                         <span class="deal-price">469€</span>
                         <span class="deal-old-price">499€</span>
                         <span class="deal-discount">-6%</span>
                     </div>
-                    <div class="deal-shop">🚚 Gratuit · Disponible chez <strong>E.Leclerc</strong></div>
-                    <a href="#" class="deal-button">Voir le deal</a>
+                    <div class="deal-shop">                      
+                        <svg class="livraison-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 7h-3V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a3 3 0 0 0 3 3h.78a3 3 0 0 0 5.44 0h2.56a3 3 0 0 0 5.44 0H21a1 1 0 0 0 1-1v-4a3 3 0 0 0-3-3zM7 19a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm3-3h-.22a3 3 0 0 0-5.56 0H11.78a3 3 0 0 0-5.56 0H6a1 1 0 0 1-1-1V8h10v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1z"/>
+                      </svg> Livraison gratuite · Disponible chez <strong>E.Leclerc</strong></div>
+                    <div class="deal-footer">
+                        <div class="deal-footer-left">
+                            <span class="posted-by">Partagé par <strong>NintendoFan</strong></span>
+                        </div>
+                        <div class="deal-footer-right">
+                            <div class="deal-actions" role="group" aria-label="Actions du deal">
+                                <button class="action-btn" title="Partager" aria-label="Partager ce deal" onclick="handleActionButton(this, 'partage')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 5.18669 15.0129 5.37001 15.0378 5.54932L8.6832 9.14638C8.08885 8.45428 7.20883 8 6.22222 8C4.45182 8 3 9.34315 3 11C3 12.6569 4.45182 14 6.22222 14C7.20883 14 8.08885 13.5457 8.6832 12.8536L15.0378 16.4507C15.0129 16.63 15 16.8133 15 17C15 18.6569 16.3431 20 18 20C19.6569 20 21 18.6569 21 17C21 15.3431 19.6569 14 18 14C17.0118 14 16.1318 14.4543 15.5374 15.1464L9.18285 11.5493C9.20771 11.37 9.22056 11.1867 9.22056 11C9.22056 10.8133 9.20771 10.63 9.18285 10.4507L15.5374 6.85362C16.1318 7.54572 17.0118 8 18 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" title="Enregistrer" aria-label="Enregistrer ce deal" onclick="handleActionButton(this, 'sauvegarde')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <a href="#" class="deal-button">Voir le deal</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -99,7 +129,7 @@
     </section>
 
     <section class="recommend">
-        <h2>Vous <span>aimeriez aussi</span></h2>
+        <h2>Vous <span>aimerez aussi</span></h2>
         <div class="recommend-grid">
             <div class="recommend-card">
                 <img src="images/deal1.jpg" alt="Smartphone en promotion">
@@ -197,6 +227,28 @@
     </footer>
 
     <script>
+        // Fonction pour gérer les votes
+        function vote(button, direction) {
+            const scoreElement = button.parentElement.querySelector('.deal-score');
+            const currentScore = parseInt(scoreElement.textContent.match(/\d+/)[0]);
+            const newScore = currentScore + direction;
+            scoreElement.textContent = `${newScore}°`;
+            // Effet visuel temporaire
+            button.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        // Fonction pour gérer les actions des boutons (partager, enregistrer)
+        function handleActionButton(button, action) {
+            // Animation visuelle
+            button.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 150);
+        }
+
         function toggleFooter() {
             const footer = document.getElementById('footer');
             const footerContent = document.getElementById('footer-content');
