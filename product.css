@@ -1,4 +1,4 @@
-/* Layout principal - spécifique à la page produit */
+/* Layout principal */
 .deal-page {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -8,11 +8,33 @@
     font-family: Arial, sans-serif;
 }
 
-/* ----------- Partie gauche - styles spécifiques ----------- */
-.deal-img {
-    place-self: anchor-center;
+/* ----------- Partie gauche ----------- */
+.deal-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-/* Styles spécifiques à la page produit */
+
+.deal-pricing {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.deal-price {
+    color: #e60023;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.deal-old-price {
+    text-decoration: line-through;
+    margin-left: 8px;
+    color: #888;
+}
+
 .deal-description {
     margin-top: 30px;
 }

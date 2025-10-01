@@ -226,8 +226,26 @@
   }
 }
 
-/*Les deals individuels - styles spécifiques au prototype*/
-/* Les styles communs sont maintenant dans deal-card.css */
+
+
+.deal-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 body {
   padding-bottom: 40px;

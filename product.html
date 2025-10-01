@@ -7,10 +7,8 @@
 
     <title>Dealabs - Page produit</title>
 
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/product.css" />
-    <link rel="stylesheet" href="css/deal-card.css" />
+    <link rel="stylesheet" href="product.css" />
+    <link rel="stylesheet" href="utils.css" />
 </head>
 
 <body>
@@ -50,7 +48,7 @@
         <section class="deal-left">
             <div class="deal-card">
                 <img src="./images/deal7.jpg" alt="Produit" class="deal-img">
-                <div class="deal-info">
+                    <div class="deal-info">
                     <div class="deal-header">
                         <div class="vote-container">
                             <button class="vote-btn downvote" onclick="vote(this, -1)" title="Voter négatif">-</button>
@@ -65,7 +63,7 @@
                         <span class="deal-old-price">499€</span>
                         <span class="deal-discount">-6%</span>
                     </div>
-                    <div class="deal-shop">                      
+                    <div class="livraison-info">                      
                         <svg class="livraison-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19 7h-3V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a3 3 0 0 0 3 3h.78a3 3 0 0 0 5.44 0h2.56a3 3 0 0 0 5.44 0H21a1 1 0 0 0 1-1v-4a3 3 0 0 0-3-3zM7 19a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm3-3h-.22a3 3 0 0 0-5.56 0H11.78a3 3 0 0 0-5.56 0H6a1 1 0 0 1-1-1V8h10v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1z"/>
                       </svg> Livraison gratuite · Disponible chez <strong>E.Leclerc</strong></div>
@@ -86,7 +84,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            <a href="#" class="deal-button">Voir le deal</a>
+                            <a href="#" class="deal-btn">Voir le deal</a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +127,7 @@
     </section>
 
     <section class="recommend">
-        <h2>Vous <span>aimerez aussi</span></h2>
+        <h2>Vous <span>aimeriez aussi</span></h2>
         <div class="recommend-grid">
             <div class="recommend-card">
                 <img src="images/deal1.jpg" alt="Smartphone en promotion">
@@ -226,8 +224,23 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/shared-functions.js"></script>
+    <script>
+        function toggleFooter() {
+            const footer = document.getElementById('footer');
+            const footerContent = document.getElementById('footer-content');
+            const arrow = document.querySelector('.arrow-up');
+
+            footer.classList.toggle('expanded');
+
+            if (footer.classList.contains('expanded')) {
+                arrow.textContent = '↓';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.textContent = '↑';
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
 
 </body>
 
