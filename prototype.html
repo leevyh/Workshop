@@ -14,7 +14,7 @@
 <body>
   <!-- Barre de navigation -->
   <nav class="navbar" role="navigation" aria-label="Menu principal">
-    <a href="#" class="logo" aria-label="Accueil Dealabs">
+    <a href="prototype.html" class="logo" aria-label="Accueil Dealabs">
       <img src="images/dealabs_logo+txt.png" height="30" alt="Dealabs" class="logo-img" />
     </a>
 
@@ -206,7 +206,7 @@
                                 </div>
                             </div>
                             <div class="trend-actions">
-                                <button class="btn-primary btn-rounded" aria-label="En savoir plus sur ${t.title}">En savoir plus</button>
+                                <a class="btn-primary btn-rounded" href="${t.href || '#'}" aria-label="En savoir plus sur ${t.title}">En savoir plus</a>
                             </div>
                         `;
 
