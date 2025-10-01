@@ -1,0 +1,439 @@
+// ========================================
+// DONNÉES DES CATÉGORIES
+// ========================================
+const categoriesData = [
+  {
+    img: "icons/high-tech.jpg",
+    alt: "High-Tech",
+    label: "High-Tech",
+  },
+  {
+    img: "icons/alimentaire.jpg",
+    alt: "Alimentaire",
+    label: "Alimentaire",
+  },
+  { img: "icons/auto.jpg", alt: "Auto", label: "Auto" },
+  { img: "icons/famille.jpg", alt: "Famille", label: "Famille" },
+  { img: "icons/sante.jpg", alt: "Santé", label: "Santé" },
+  {
+    img: "icons/bricolage.jpg",
+    alt: "Bricolage",
+    label: "Bricolage",
+  },
+  { img: "icons/mode.jpg", alt: "Mode", label: "Mode" },
+  { img: "icons/arts.jpg", alt: "Arts", label: "Arts" },
+  { img: "icons/maison.jpg", alt: "Maison", label: "Maison" },
+  { img: "icons/voyages.jpg", alt: "Voyages", label: "Voyages" },
+  { img: "icons/gaming.jpg", alt: "Gaming", label: "Gaming" },
+  { img: "icons/sports.jpg", alt: "Sports", label: "Sports" },
+];
+
+// ========================================
+// DONNÉES DES TENDANCES
+// ========================================
+const trend = [
+  {
+    title: "Smartphone -39%",
+    desc: '[Unidays] Smartphone 6,7" Samsung Galaxy S25 Plus - RAM 12 Go, 256 Go',
+    img: "images/deal1.jpg",
+    alt: "Smartphone en promotion",
+    rightprice: "711,55€",
+    oldprice: "1172,05€",
+  },
+  {
+    title: "Pack Console Nintendo Switch 2 + Légendes Pokémon Z-A",
+    desc: "Nouvelle génération de Nintendo...",
+    img: "images/deal7.jpg",
+    alt: "Nintendo Switch",
+    rightprice: "469€",
+    oldprice: "499€",
+    href: "product.html"
+  },
+  {
+    title: "Ecran PC -42%",
+    desc: 'Ecran PC 27" Lenovo Legion R27qe - 180 Hz, QHD',
+    img: "images/deal2.jpg",
+    alt: "Télévision 4K",
+    rightprice: "149,99€",
+    oldprice: "259,99€",
+  },
+  {
+    title: "Montre -30%",
+    desc: "Montre Tissot T-Classic Gentleman, acier argenté - edora-bijouterie.fr",
+    img: "images/deal3.jpg",
+    alt: "Montre",
+    rightprice: "332,50€",
+    oldprice: "475€",
+  },
+  {
+    title: "Casque audio -23%",
+    desc: "Casque audio sans fil Sony Bluetooth à réduction de bruit WH-CH720N",
+    img: "images/deal4.jpg",
+    alt: "Casque audio",
+    rightprice: "61,99€",
+    oldprice: "80€",
+  },
+  {
+    title: "Chaussures running -50%",
+    desc: "Chaussures de running New balance Propel V4 - du 40 au 46.5",
+    img: "images/deal5.jpg",
+    alt: "Chaussures running",
+    rightprice: "65€",
+    oldprice: "130€",
+  },
+  {
+    title: "Parc d'attraction -15%",
+    desc: "[Lidl+] 15% de réduction sur les billets Liberté Flex au Parc Astérix",
+    img: "images/deal6.png",
+    alt: "Parc d'attractions",
+    rightprice: "-15%",
+  },
+];
+
+// ========================================
+// DONNÉES DES DEALS
+// ========================================
+const dealsData = [
+  {
+    img: "images/furygan.jpg",
+    alt: "Blouson moto Furygan",
+    score: "239°",
+    time: "Publié il y a 23h",
+    expiry: "Expire dans 2h",
+    title: "Blouson moto Furygan RAPTOR EVO 3",
+    currentPrice: "288,90€",
+    oldPrice: "499€",
+    discount: "-42%",
+    delivery: "Livraison gratuite",
+    platform: "Motoblouz",
+    desc: "Noir/Rouge du S au XL",
+    postedBy: "Crocrodeal",
+  },
+  {
+    img: "images/prague.jpg",
+    alt: "Vol Paris Prague",
+    score: "281°",
+    time: "Publié il y a 3h",
+    title: "Vol Direct A/R Paris (BVA) - Prague (PRG)",
+    currentPrice: "34€",
+    oldPrice: "",
+    discount: "",
+    platform: "Raynair",
+    desc: "Vol Direct Aller/Retour Paris (BVA) <<=>> Prague Václav-Havel (PRG) Du 9 Octobre au 15 Octobre (1 Bagage à main inclus).",
+    postedBy: "Nico_Toz",
+  },
+  {
+    img: "images/nike.jpg",
+    alt: "Chaussures de sport",
+    score: "203°",
+    time: "Publié il y a 14h",
+    title: "Chaussures Nike Air Max 270 - Toutes tailles disponibles",
+    currentPrice: "89€",
+    oldPrice: "140€",
+    discount: "-36%",
+    platform: "Zalando",
+    desc: "Chaussures de sport iconiques Nike avec technologie Air Max. Confort optimal pour le quotidien.",
+    delivery: "Livraison express",
+    promoCode: "NIKE36",
+    postedBy: "Rasta972",
+  },
+  {
+    img: "images/lossless.jpg",
+    alt: "Logiciel Lossless Scaling",
+    score: "347°",
+    time: "Publié il y a 1j",
+    title: "Logiciel Lossless Scaling sur PC (Dématérialisé - Steam)",
+    currentPrice: "4,13€",
+    oldPrice: "6,89€",
+    discount: "-40%",
+    platform: "Steam",
+    desc: "De retour à un prix bas avec les soldes d'automne de Steam. Un logiciel de frame generation qu'on ne présente plus…",
+    postedBy: "caaptain",
+  },
+];
+
+// ========================================
+// FONCTION DE CHARGEMENT DES CATÉGORIES
+// ========================================
+function loadCategories() {
+  const container = document.querySelector(".categories-container");
+  categoriesData.forEach((cat) => {
+    const card = document.createElement("a");
+    card.classList.add("category-card");
+    card.href = `#${cat.label.toLowerCase()}`;
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `Voir les deals de la catégorie ${cat.label}`);
+    card.innerHTML = `
+      <img src="${cat.img}" alt="">
+      <span>${cat.label}</span>
+    `;
+
+    // Gestion clavier
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+    container.appendChild(card);
+  });
+}
+
+// ========================================
+// FONCTION DE RENDU DES TENDANCES
+// ========================================
+function renderTrends(items) {
+  const slider = document.getElementById("slider");
+  slider.innerHTML = "";
+  items.forEach((t, index) => {
+    const article = document.createElement("article");
+    article.className = "trend-card";
+    article.tabIndex = 0;
+    article.setAttribute("aria-label", `Tendance ${index + 1}: ${t.title} - ${t.rightprice}`);
+    article.setAttribute("aria-describedby", `trend-desc-${index}`);
+
+    const oldPriceHtml = t.oldprice
+      ? `<span class="old-price" aria-label="Ancien prix">${t.oldprice}</span>`
+      : "";
+
+    article.innerHTML = `
+      <img src="${t.img}" alt="" role="presentation">
+      <div class="trend-content">
+        <div class="trend-info">
+          <h3>${t.title}</h3>
+          <p id="trend-desc-${index}">${t.desc}</p>
+        </div>
+        <div class="price" aria-label="Informations prix">
+          <span class="current-price" aria-label="Prix actuel">${t.rightprice}</span>
+          ${oldPriceHtml}
+        </div>
+      </div>
+      <div class="trend-actions">
+        <a class="btn-primary btn-rounded" href="${t.href || '#'}" aria-label="En savoir plus sur ${t.title}">En savoir plus</a>
+      </div>
+    `;
+
+    // Gestion du clavier pour les cartes de tendance
+    article.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const button = article.querySelector('button');
+        if (button) button.click();
+      }
+    });
+
+    slider.appendChild(article);
+  });
+}
+
+// ========================================
+// NAVIGATION SLIDER DES TENDANCES
+// ========================================
+function initSliderNavigation() {
+  const slider = document.getElementById("slider");
+  const scrollAmount = 280;
+
+  // Navigation clavier pour le slider
+  slider.addEventListener('keydown', (e) => {
+    const focusedCard = document.activeElement;
+    const cards = Array.from(slider.querySelectorAll('.trend-card'));
+    const currentIndex = cards.indexOf(focusedCard);
+    
+    switch(e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        if (currentIndex < cards.length - 1) {
+          cards[currentIndex + 1].focus();
+        } else {
+          slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        if (currentIndex > 0) {
+          cards[currentIndex - 1].focus();
+        } else {
+          slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+        break;
+      case 'Home':
+        e.preventDefault();
+        if (cards.length > 0) {
+          cards[0].focus();
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+        break;
+      case 'End':
+        e.preventDefault();
+        if (cards.length > 0) {
+          cards[cards.length - 1].focus();
+          slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+        }
+        break;
+    }
+  });
+}
+
+// ========================================
+// FONCTIONS POUR LES DEALS
+// ========================================
+
+// Fonction copier code promo
+function copyPromoCode(event, code) {
+  event.stopPropagation();
+  navigator.clipboard.writeText(code).then(() => {
+    const copyBtn = event.target;
+    const originalText = copyBtn.textContent;
+    copyBtn.textContent = 'Copié!';
+    copyBtn.classList.add('copied');
+    copyBtn.setAttribute('aria-label', 'Code promo copié dans le presse-papiers');
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.classList.remove('copied');
+      copyBtn.setAttribute('aria-label', `Copier le code promo ${code}`);
+    }, 2000);
+  });
+}
+
+// Fonction pour gérer les votes
+function vote(button, direction) {
+  const scoreElement = button.parentElement.querySelector('.deal-score');
+  const currentScore = parseInt(scoreElement.textContent.match(/\d+/)[0]);
+  const newScore = currentScore + direction;
+  scoreElement.textContent = `${newScore}°`;
+  // Effet visuel temporaire
+  button.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    button.style.transform = 'scale(1)';
+  }, 150);
+}
+
+// Fonction pour gérer les actions des boutons (commentaires, partager, enregistrer)
+function handleActionButton(button, action) {
+  // Animation visuelle
+  button.style.transform = 'scale(1.1)';
+  setTimeout(() => {
+    button.style.transform = 'scale(1)';
+  }, 150);
+}
+
+// Fonction de chargement des deals
+function loadDeals() {
+  const container = document.querySelector(".deals-container");
+  dealsData.forEach((deal, dealIndex) => {
+    const card = document.createElement("div");
+    card.classList.add("deal-card");
+    card.setAttribute('role', 'listitem');
+    card.setAttribute('aria-label', `Deal: ${deal.title} - ${deal.currentPrice}`);
+    card.setAttribute('aria-describedby', `deal-desc-${dealIndex}`);
+    
+    // Action (code promo ou bouton voir le deal)
+    const actionSection = deal.promoCode 
+      ? `
+        <div class="promo-container">
+          <span class="promo-code">${deal.promoCode}</span>
+          <button class="copy-btn" onclick="copyPromoCode(event, '${deal.promoCode}')">
+            Copier & utiliser
+          </button>
+        </div>
+      `
+      : `
+        <button class="deal-btn">Voir le deal</button>
+      `;
+        
+    card.innerHTML = `
+      <div class="deal-image" aria-hidden="true">
+          <img src="${deal.img}" alt="" role="presentation">
+      </div>
+      <div class="deal-content">
+          <div class="deal-header">
+              <div class="vote-container">
+                  <button class="vote-btn downvote" onclick="vote(this, -1)" title="Voter négatif">-</button>
+                  <span class="deal-score">${deal.score}</span>
+                  <button class="vote-btn upvote" onclick="vote(this, 1)" title="Voter positif">+</button>
+              </div>
+              ${deal.expiry ? `<span class="deal-expiry">${deal.expiry}</span>` : `<span class="deal-time">${deal.time}</span>`}
+          </div>
+          <h3 class="deal-title">${deal.title}</h3>
+          <div class="deal-price">
+            <span class="current-price">${deal.currentPrice}</span>
+            <span class="old-price">${deal.oldPrice}</span>
+            ${deal.discount && deal.discount.trim() !== '' ? `<span class="discount">${deal.discount}</span>` : ''}
+            ${deal.delivery
+          ? `<span class="livraison-info" title="Livraison">
+              <svg class="livraison-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 7h-3V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a3 3 0 0 0 3 3h.78a3 3 0 0 0 5.44 0h2.56a3 3 0 0 0 5.44 0H21a1 1 0 0 0 1-1v-4a3 3 0 0 0-3-3zM7 19a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm3-3h-.22a3 3 0 0 0-5.56 0H11.78a3 3 0 0 0-5.56 0H6a1 1 0 0 1-1-1V8h10v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1z"/>
+              </svg>
+              ${deal.delivery}
+            </span>` : ""
+          }
+            <span class="platform">Disponible chez <strong>${deal.platform}</strong></span>
+          </div>
+          <p class="deal-desc">${deal.desc}</p>
+          <div class="deal-footer">
+            <div class="deal-footer-left">
+              <span class="posted-by">Partagé par <strong>${deal.postedBy}</strong></span>
+            </div>
+            <div class="deal-footer-right">
+              <div class="deal-actions" role="group" aria-label="Actions du deal">
+                <button class="action-btn" title="Commentaires" aria-label="Voir les commentaires" onclick="handleActionButton(this, 'commentaires')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button class="action-btn" title="Partager" aria-label="Partager ce deal" onclick="handleActionButton(this, 'partage')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 5.18669 15.0129 5.37001 15.0378 5.54932L8.6832 9.14638C8.08885 8.45428 7.20883 8 6.22222 8C4.45182 8 3 9.34315 3 11C3 12.6569 4.45182 14 6.22222 14C7.20883 14 8.08885 13.5457 8.6832 12.8536L15.0378 16.4507C15.0129 16.63 15 16.8133 15 17C15 18.6569 16.3431 20 18 20C19.6569 20 21 18.6569 21 17C21 15.3431 19.6569 14 18 14C17.0118 14 16.1318 14.4543 15.5374 15.1464L9.18285 11.5493C9.20771 11.37 9.22056 11.1867 9.22056 11C9.22056 10.8133 9.20771 10.63 9.18285 10.4507L15.5374 6.85362C16.1318 7.54572 17.0118 8 18 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button class="action-btn" title="Enregistrer" aria-label="Enregistrer ce deal" onclick="handleActionButton(this, 'sauvegarde')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              ${actionSection}
+            </div>
+          </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ========================================
+// FONCTION TOGGLE FOOTER
+// ========================================
+function toggleFooter() {
+  const footer = document.getElementById('footer');
+  const footerContent = document.getElementById('footer-content');
+  const arrow = document.querySelector('.arrow-up');
+  
+  footer.classList.toggle('expanded');
+  
+  if (footer.classList.contains('expanded')) {
+    arrow.textContent = '↓';
+    arrow.style.transform = 'rotate(180deg)';
+  } else {
+    arrow.textContent = '↑';
+    arrow.style.transform = 'rotate(0deg)';
+  }
+}
+
+// ========================================
+// INITIALISATION AU CHARGEMENT DE LA PAGE
+// ========================================
+window.addEventListener("DOMContentLoaded", function() {
+  // Charger les catégories
+  loadCategories();
+  
+  // Charger les tendances
+  renderTrends(trend);
+  
+  // Initialiser la navigation du slider
+  initSliderNavigation();
+  
+  // Charger les deals
+  loadDeals();
+});
