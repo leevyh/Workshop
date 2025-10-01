@@ -116,6 +116,15 @@
             oldprice: "1172,05€",
           },
           {
+            title: "Pack Console Nintendo Switch 2 + Légendes Pokémon Z-A",
+            desc: "",
+            img: "images/deal7.jpg",
+            alt: "Nintendo Switch",
+            rightprice: "469€",
+            oldprice: "499€",
+            href: "product.html"
+          },
+          {
             title: "Ecran PC -42%",
             desc: 'Ecran PC 27" Lenovo Legion R27qe - 180 Hz, QHD',
             img: "images/deal2.jpg",
@@ -154,14 +163,6 @@
             alt: "Parc d'attractions",
             rightprice: "-15%",
           },
-          {
-            title: "Pack Console Nintendo Switch 2 + Légendes Pokémon Z-A",
-            desc: "",
-            img: "images/deal7.jpg",
-            alt: "Nintendo Switch",
-            rightprice: "469€",
-            oldprice: "499€",
-          }
         ];
 
         const slider = document.getElementById("slider");
@@ -191,7 +192,7 @@
                                 </div>
                             </div>
                             <div class="trend-actions">
-                                <button class="btn-primary btn-rounded">En savoir plus</button>
+                                <a class="btn-primary btn-rounded" href="${t.href || '#'}">En savoir plus</a>
                             </div>
                         `;
             slider.appendChild(article);
