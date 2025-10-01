@@ -51,15 +51,17 @@ body {
 
 .search-wrapper input {
   width: 100%;
-  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  padding: 0.75rem 3rem 0.75rem 1rem;
   border: 1px solid #ccc;
   border-radius: 25px;
   outline: none;
+  min-height: 44px;
+  box-sizing: border-box;
 }
 
 .clear-btn {
   position: absolute;
-  right: 0.5rem;
+  right: 0.25rem;
   top: 50%;
   transform: translateY(-50%);
   border: none;
@@ -67,7 +69,13 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
   color: #999;
-  padding: 0;
+  padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .clear-btn:hover,
