@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dealabs - Prototype Workshop</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Barre de navigation -->
+  <nav class="navbar" role="navigation" aria-label="Menu principal">
+    <a href="#" class="logo" aria-label="Accueil Dealabs">
+      <img src="images/dealabs_logo+txt.png" height="30" alt="Dealabs" class="logo-img" />
+    </a>
+
+    <!-- Barre de recherche -->
+    <form class="search-form" role="search" aria-label="Recherche">
+      <label for="search" class="visually-hidden">Rechercher</label>
+      <div class="search-wrapper">
+        <input type="text" id="search" placeholder="Rechercher un deal…" aria-label="Recherche" />
+        <button type="button" class="clear-btn" aria-label="Effacer la recherche">
+          &times;
+        </button>
+      </div>
+    </form>
+
+    <!-- Boutons -->
+    <div class="nav-buttons">
+      <button class="btn-publish">
+        <span class="icon">+</span>
+        <span class="text">Poster</span>
+      </button>
+      <button class="btn-login">
+        <span class="text">Se connecter</span>
+        <span class="icon">
+          <img src="icons/register.png" height="18" alt="Register" class="register-logo" />
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Section Hero -->
+  <header class="hero">
+    <h1 class="title">
+      Ne ratez plus jamais une <span>bonne affaire</span>.
+    </h1>
+    <a href="#" class="btn-primary">Voir les deals du jour</a>
+  </header>
+
+  <!-- Liste des deals -->
+  <main>
+    <section class="categories-section">
+      <h2><span>Catégories</span> de produits</h2>
+      <div class="categories-container"></div>
+
+      <script>
+        const categoriesData = [
+          {
+            img: "icons/high-tech.jpg",
+            alt: "High-Tech",
+            label: "High-Tech",
+          },
+          {
+            img: "icons/alimentaire.jpg",
+            alt: "Alimentaire",
+            label: "Alimentaire",
+          },
+          { img: "icons/auto.jpg", alt: "Auto", label: "Auto" },
+          { img: "icons/famille.jpg", alt: "Famille", label: "Famille" },
+          { img: "icons/sante.jpg", alt: "Santé", label: "Santé" },
+          {
+            img: "icons/bricolage.jpg",
+            alt: "Bricolage",
+            label: "Bricolage",
+          },
+          { img: "icons/mode.jpg", alt: "Mode", label: "Mode" },
+          { img: "icons/arts.jpg", alt: "Arts", label: "Arts" },
+          { img: "icons/maison.jpg", alt: "Maison", label: "Maison" },
+          { img: "icons/voyages.jpg", alt: "Voyages", label: "Voyages" },
+          { img: "icons/gaming.jpg", alt: "Gaming", label: "Gaming" },
+          { img: "icons/sports.jpg", alt: "Sports", label: "Sports" },
+        ];
+
+        function loadCategories() {
+          const container = document.querySelector(".categories-container");
+          categoriesData.forEach((cat) => {
+            const card = document.createElement("a");
+            card.classList.add("category-card");
+            card.href = `#${cat.label.toLowerCase()}`;
+            card.innerHTML = `
+                                <img src="${cat.img}" alt="${cat.alt}">
+                                <span>${cat.label}</span>
+                            `;
+            container.appendChild(card);
+          });
+        }
+
+        window.addEventListener("DOMContentLoaded", loadCategories);
+      </script>
+    </section>
+    <section class="trend-section">
+      <h2 class="trend-title">Les <span>Tendances</span></h2>
+      <div class="slider" id="slider" role="list"></div>
+
+      <script>
+        const trend = [
+          {
+            title: "Smartphone -39%",
+            desc: '[Unidays] Smartphone 6,7" Samsung Galaxy S25 Plus - RAM 12 Go, 256 Go',
+            img: "images/deal1.jpg",
+            alt: "Smartphone en promotion",
+            rightprice: "711,55€",
+            oldprice: "1172,05€",
+          },
+          {
+            title: "Ecran PC -42%",
+            desc: 'Ecran PC 27" Lenovo Legion R27qe - 180 Hz, QHD',
+            img: "images/deal2.jpg",
+            alt: "Télévision 4K",
+            rightprice: "149,99€",
+            oldprice: "259,99€",
+          },
+          {
+            title: "Montre -30%",
+            desc: "Montre Tissot T-Classic Gentleman, acier argenté - edora-bijouterie.fr",
+            img: "images/deal3.jpg",
+            alt: "Montre",
+            rightprice: "332,50€",
+            oldprice: "475€",
+          },
+          {
+            title: "Casque audio -23%",
+            desc: "Casque audio sans fil Sony Bluetooth à réduction de bruit WH-CH720N",
+            img: "images/deal4.jpg",
+            alt: "Casque audio",
+            rightprice: "61,99€",
+            oldprice: "80€",
+          },
+          {
+            title: "Chaussures running -50%",
+            desc: "Chaussures de running New balance Propel V4 - du 40 au 46.5",
+            img: "images/deal5.jpg",
+            alt: "Chaussures running",
+            rightprice: "65€",
+            oldprice: "130€",
+          },
+          {
+            title: "Parc d'attraction -15%",
+            desc: "[Lidl+] 15% de réduction sur les billets Liberté Flex au Parc Astérix",
+            img: "images/deal6.png",
+            alt: "Parc d'attractions",
+            rightprice: "-15%",
+          },
+        ];
+
+        const slider = document.getElementById("slider");
+
+        function renderTrends(items) {
+          slider.innerHTML = "";
+          items.forEach((t) => {
+            const article = document.createElement("article");
+            article.className = "trend-card";
+            article.tabIndex = 0;
+            article.setAttribute("role", "listitem");
+
+            const oldPriceHtml = t.oldprice
+              ? `<span class="old-price">${t.oldprice}</span>`
+              : "";
+
+            article.innerHTML = `
+                            <img src="${t.img}" alt="${t.alt}">
+                            <div class="trend-content">
+                                <div class="trend-info">
+                                    <h3>${t.title}</h3>
+                                    <p>${t.desc}</p>
+                                </div>
+                                <div class="price">
+                                    <span class="current-price">${t.rightprice}</span>
+                                    ${oldPriceHtml}
+                                </div>
+                            </div>
+                            <div class="trend-actions">
+                                <button class="btn-primary btn-rounded">En savoir plus</button>
+                            </div>
+                        `;
+            slider.appendChild(article);
+          });
+        }
+        renderTrends(trend);
+
+        const scrollAmount = 280;
+
+        // déplacement clavier (gauche/droite) pour accessibilité
+        slider.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            if (e.key === 'ArrowLeft') slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+      </script>
+    </section>
+
+    <section class="deals-section">
+      <h2>Tous les <span>Deals</span></h2>
+      <div class="deals-container"></div>
+
+      <script>
+        const dealsData = [
+          {
+            img: "images/furygan.jpg",
+            alt: "Blouson moto Furygan",
+            score: "239°",
+            time: "Posté il y a 23h",
+            expiry: "Expire dans 2h",
+            title: "Blouson moto Furygan RAPTOR EVO 3",
+            currentPrice: "288,90€",
+            oldPrice: "499€",
+            discount: "-42%",
+            delivery: "Livraison gratuite",
+            platform: "Motoblouz",
+            desc: "Noir/Rouge du S au XL",
+            postedBy: "Crocrodeal",
+          },
+          {
+            img: "images/prague.jpg",
+            alt: "Vol Paris Prague",
+            score: "281°",
+            time: "Posté il y a 3h",
+            title: "Vol Direct A/R Paris (BVA) - Prague (PRG)",
+            currentPrice: "34€",
+            oldPrice: "",
+            discount: "",
+            platform: "Raynair",
+            desc: "Vol Direct Aller/Retour Paris (BVA) <<=>> Prague Václav-Havel (PRG) Du 9 Octobre au 15 Octobre (1 Bagage à main inclus).",
+            postedBy: "Nico_Toz",
+          },
+          {
+            img: "images/nike.jpg",
+            alt: "Chaussures de sport",
+            score: "203°",
+            time: "Posté il y a 14h",
+            title: "Chaussures Nike Air Max 270 - Toutes tailles disponibles",
+            currentPrice: "89€",
+            oldPrice: "140€",
+            discount: "-36%",
+            platform: "Zalando",
+            desc: "Chaussures de sport iconiques Nike avec technologie Air Max. Confort optimal pour le quotidien.",
+            delivery: "Livraison express",
+            promoCode: "NIKE36",
+            postedBy: "Rasta972",
+          },
+          {
+            img: "images/lossless.jpg",
+            alt: "Logiciel Lossless Scaling",
+            score: "347°",
+            time: "Posté il y a 1j",
+            title: "Logiciel Lossless Scaling sur PC (Dématérialisé - Steam)",
+            currentPrice: "4,13€",
+            oldPrice: "6,89€",
+            discount: "-40%",
+            platform: "Steam",
+            desc: "De retour à un prix bas avec les soldes d’automne de Steam. Un logiciel de frame generation qu’on ne présente plus…",
+            postedBy: "caaptain",
+          },
+        ];
+
+        // Fonction copier code promo
+        function copyPromoCode(event, code) {
+          event.stopPropagation();
+          navigator.clipboard.writeText(code).then(() => {
+            const copyBtn = event.target;
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copié!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+              copyBtn.textContent = originalText;
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          });
+        }
+        
+        // Fonction pour gérer les votes
+        function vote(button, direction) {
+          const scoreElement = button.parentElement.querySelector('.deal-score');
+          const currentScore = parseInt(scoreElement.textContent.match(/\d+/)[0]);
+          const newScore = currentScore + direction;
+          scoreElement.textContent = `${newScore}°`;
+          // Effet visuel temporaire
+          button.style.transform = 'scale(1.2)';
+          setTimeout(() => {
+            button.style.transform = 'scale(1)';
+          }, 150);
+        }
+        function loadDeals() {
+          const container = document.querySelector(".deals-container");
+          dealsData.forEach((deal) => {
+            const card = document.createElement("div");
+            card.classList.add("deal-card");
+            
+            // Action (code promo ou bouton voir le deal)
+            const actionSection = deal.promoCode 
+              ? `
+                <div class="promo-container">
+                  <span class="promo-code">${deal.promoCode}</span>
+                  <button class="copy-btn" onclick="copyPromoCode(event, '${deal.promoCode}')">
+                    Copier & utiliser
+                  </button>
+                </div>
+              `
+              : `
+                <button class="deal-btn">Voir le deal</button>
+              `;
+                
+            card.innerHTML = `
+              <div class="deal-image">
+                  <img src="${deal.img}" alt="${deal.alt}">
+              </div>
+              <div class="deal-content">
+                  <div class="deal-header">
+                      <div class="vote-container">
+                          <button class="vote-btn downvote" onclick="vote(this, -1)" title="Voter négatif">-</button>
+                          <span class="deal-score">${deal.score}</span>
+                          <button class="vote-btn upvote" onclick="vote(this, 1)" title="Voter positif">+</button>
+                      </div>
+                      ${deal.expiry ? `<span class="deal-expiry">${deal.expiry}</span>` : `<span class="deal-time">${deal.time}</span>`}
+                  </div>
+                  <h3 class="deal-title">${deal.title}</h3>
+                  <div class="deal-price">
+                    <span class="current-price">${deal.currentPrice}</span>
+                    <span class="old-price">${deal.oldPrice}</span>
+                    ${deal.discount && deal.discount.trim() !== '' ? `<span class="discount">${deal.discount}</span>` : ''}
+                    ${deal.delivery
+                  ? `<span class="livraison-info" title="Livraison">
+                      <svg class="livraison-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 7h-3V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a3 3 0 0 0 3 3h.78a3 3 0 0 0 5.44 0h2.56a3 3 0 0 0 5.44 0H21a1 1 0 0 0 1-1v-4a3 3 0 0 0-3-3zM7 19a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm3-3h-.22a3 3 0 0 0-5.56 0H11.78a3 3 0 0 0-5.56 0H6a1 1 0 0 1-1-1V8h10v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1z"/>
+                      </svg>
+                      ${deal.delivery}
+                    </span>` : ""
+                  }
+                    <span class="platform">Disponible chez <strong>${deal.platform}</strong></span>
+                  </div>
+                  <p class="deal-desc">${deal.desc}</p>
+                  <div class="deal-footer">
+                    <span class="posted-by">Partagé par <strong>${deal.postedBy}</strong></span>
+                    ${actionSection}
+                  </div>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+        }
+
+        window.addEventListener("DOMContentLoaded", loadDeals);
+      </script>
+    </section>
+  </main>
+</body>
+<!-- Footer -->
+<footer class="footer" id="footer">
+  <div class="footer-toggle" onclick="toggleFooter()">
+    <span class="arrow-up">↑</span>
+  </div>
+  <div class="footer-content" id="footer-content">
+    <div class="footer-info">
+      <p>© 2025 Dealabs – Prototype workshop</p>
+      <div class="footer-links">
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+        <a href="#">Conditions d'utilisation</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFooter() {
+  const footer = document.getElementById('footer');
+  const footerContent = document.getElementById('footer-content');
+  const arrow = document.querySelector('.arrow-up');
+  
+  footer.classList.toggle('expanded');
+  
+  if (footer.classList.contains('expanded')) {
+    arrow.textContent = '↓';
+    arrow.style.transform = 'rotate(180deg)';
+  } else {
+    arrow.textContent = '↑';
+    arrow.style.transform = 'rotate(0deg)';
+  }
+}
+</script>
+
+</html>
