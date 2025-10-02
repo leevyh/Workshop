@@ -30,6 +30,22 @@
 
     <!-- Boutons -->
     <div class="nav-buttons">
+      <button class="btn-contrast" onclick="toggleHighContrast()" aria-label="Basculer le mode contraste" title="Mode contraste élevé">
+        <svg class="contrast-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="contrast-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
       <button class="btn-publish">
         <span class="icon">+</span>
         <span class="text">Poster</span>
@@ -45,7 +61,7 @@
 
   <!-- Section Hero -->
   <header class="hero">
-    <h1 class="title">
+    <h1 class="title" aria-label="Ne ratez plus jamais une bonne affaire">
       Ne ratez plus jamais une <span>bonne affaire</span>.
     </h1>
     <a href="#" class="btn-primary">Voir les deals du jour</a>
@@ -54,7 +70,7 @@
   <!-- Liste des deals -->
   <main role="main" aria-label="Contenu principal">
     <section class="categories-section" aria-labelledby="categories-heading">
-      <h2 id="categories-heading"><span>Catégories</span> de produits</h2>
+      <h2 id="categories-heading" aria-label="Catégories de produits"><span>Catégories</span> de produits</h2>
       <div class="categories-container"></div>
 
       <script>
@@ -95,7 +111,7 @@
             card.setAttribute('role', 'button');
             card.setAttribute('aria-label', `Voir les deals de la catégorie ${cat.label}`);
             card.innerHTML = `
-                                <img src="${cat.img}" alt="">
+                                <img src="${cat.img}" alt="Catégorie ${cat.alt}"/>
                                 <span>${cat.label}</span>
                             `;
 
@@ -114,7 +130,7 @@
       </script>
     </section>
     <section class="trend-section" aria-labelledby="trends-heading">
-      <h2 class="trend-title">Les <span>Tendances</span></h2>
+      <h2 class="trend-title" aria-label="Les tendances">Les <span>Tendances</span></h2>
       <div class="slider" id="slider" role="region" aria-label="Carrousel des deals en tendance"></div>
 
       <script>
@@ -287,6 +303,7 @@
             platform: "Motoblouz",
             desc: "Noir/Rouge du S au XL",
             postedBy: "Crocrodeal",
+            dealUrl: "https://www.motoblouz.com/vente-blouson-moto-furygan-raptor-evo-3-188508.html"
           },
           {
             img: "images/prague.jpg",
@@ -300,6 +317,7 @@
             platform: "Raynair",
             desc: "Vol Direct Aller/Retour Paris (BVA) <<=>> Prague Václav-Havel (PRG) Du 9 Octobre au 15 Octobre (1 Bagage à main inclus).",
             postedBy: "Nico_Toz",
+            dealUrl: "https://www.ryanair.com/fr/fr/"
           },
           {
             img: "images/nike.jpg",
@@ -315,6 +333,7 @@
             delivery: "Livraison express",
             promoCode: "NIKE36",
             postedBy: "Rasta972",
+            dealUrl: "https://www.zalando.fr/nike-air-max-270-baskets-basses.html"
           },
           {
             img: "images/lossless.jpg",
@@ -328,6 +347,7 @@
             platform: "Steam",
             desc: "De retour à un prix bas avec les soldes d’automne de Steam. Un logiciel de frame generation qu’on ne présente plus…",
             postedBy: "caaptain",
+            dealUrl: "https://store.steampowered.com/app/993090/Lossless_Scaling/"
           },
         ];
 
@@ -390,7 +410,7 @@
                 </div>
               `
               : `
-                <button class="deal-btn">Voir le deal</button>
+                <a href="${deal.dealUrl}" target="_blank" rel="noopener noreferrer" class="deal-btn" aria-label="Voir l'offre ${deal.title} sur ${deal.platform}">Voir le deal</a>
               `;
                 
             card.innerHTML = `
@@ -406,7 +426,9 @@
                       </div>
                       ${deal.expiry ? `<span class="deal-expiry">${deal.expiry}</span>` : `<span class="deal-time">${deal.time}</span>`}
                   </div>
-                  <h3 class="deal-title">${deal.title}</h3>
+                  <h3 class="deal-title">
+                    <a href="product.html" class="deal-title-link" aria-label="Voir les détails de ${deal.title}">${deal.title}</a>
+                  </h3>
                   <div class="deal-price">
                     <span class="current-price">${deal.currentPrice}</span>
                     <span class="old-price">${deal.oldPrice}</span>
@@ -492,6 +514,47 @@ function toggleFooter() {
     arrow.style.transform = 'rotate(0deg)';
   }
 }
+
+// Fonction pour basculer le mode contraste élevé
+function toggleHighContrast() {
+  const body = document.body;
+  const contrastBtn = document.querySelector('.btn-contrast');
+  const sunIcon = contrastBtn.querySelector('.sun-icon');
+  const moonIcon = contrastBtn.querySelector('.moon-icon');
+  
+  body.classList.toggle('high-contrast');
+  
+  // Mettre à jour l'apparence du bouton et les icônes
+  if (body.classList.contains('high-contrast')) {
+    contrastBtn.classList.add('active');
+    contrastBtn.setAttribute('aria-pressed', 'true');
+    contrastBtn.title = 'Désactiver le mode contraste élevé (mode sombre actif)';
+    // Sauvegarder la préférence
+    localStorage.setItem('highContrast', 'enabled');
+  } else {
+    contrastBtn.classList.remove('active');
+    contrastBtn.setAttribute('aria-pressed', 'false');
+    contrastBtn.title = 'Activer le mode contraste élevé';
+    // Supprimer la préférence
+    localStorage.removeItem('highContrast');
+  }
+}
+
+// Charger la préférence de contraste au chargement de la page
+window.addEventListener('DOMContentLoaded', function() {
+  const savedContrast = localStorage.getItem('highContrast');
+  const contrastBtn = document.querySelector('.btn-contrast');
+  
+  if (savedContrast === 'enabled') {
+    document.body.classList.add('high-contrast');
+    contrastBtn.classList.add('active');
+    contrastBtn.setAttribute('aria-pressed', 'true');
+    contrastBtn.title = 'Désactiver le mode contraste élevé (mode sombre actif)';
+  } else {
+    contrastBtn.setAttribute('aria-pressed', 'false');
+    contrastBtn.title = 'Activer le mode contraste élevé';
+  }
+});
 </script>
 
 </html>
