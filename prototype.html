@@ -45,7 +45,7 @@
 
   <!-- Section Hero -->
   <header class="hero">
-    <h1 class="title">
+    <h1 class="title" aria-label="Ne ratez plus jamais une bonne affaire">
       Ne ratez plus jamais une <span>bonne affaire</span>.
     </h1>
     <a href="#" class="btn-primary">Voir les deals du jour</a>
@@ -54,7 +54,7 @@
   <!-- Liste des deals -->
   <main role="main" aria-label="Contenu principal">
     <section class="categories-section" aria-labelledby="categories-heading">
-      <h2 id="categories-heading"><span>Catégories</span> de produits</h2>
+      <h2 id="categories-heading" aria-label="Catégories de produits"><span>Catégories</span> de produits</h2>
       <div class="categories-container"></div>
 
       <script>
@@ -95,7 +95,7 @@
             card.setAttribute('role', 'button');
             card.setAttribute('aria-label', `Voir les deals de la catégorie ${cat.label}`);
             card.innerHTML = `
-                                <img src="${cat.img}" alt="">
+                                <img src="${cat.img}" alt="" aria-label="${cat.alt}"/>
                                 <span>${cat.label}</span>
                             `;
 
@@ -114,7 +114,7 @@
       </script>
     </section>
     <section class="trend-section" aria-labelledby="trends-heading">
-      <h2 class="trend-title">Les <span>Tendances</span></h2>
+      <h2 class="trend-title" aria-label="Les tendances">Les <span>Tendances</span></h2>
       <div class="slider" id="slider" role="region" aria-label="Carrousel des deals en tendance"></div>
 
       <script>
