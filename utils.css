@@ -280,9 +280,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   padding: 20px;
   flex-wrap: wrap;
   gap: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
 .footer-accessibility {
@@ -326,14 +330,6 @@ body {
 .font-btn.active {
   background: #007a99;
   color: white;
-}
-
-.font-btn[data-size="normal"] {
-  font-size: 14px;
-}
-
-.font-btn[data-size="large"] {
-  font-size: 16px;
 }
 
 @media (max-width: 768px) {
@@ -404,14 +400,6 @@ body.font-large .font-btn { font-size: 16px; }
   font-size: 14px;
   font-weight: bold;
   transition: transform 0.3s ease;
-}
-
-.footer-content {
-  padding: 2rem;
-  text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
 }
 
 .footer.expanded .footer-content {
