@@ -782,6 +782,12 @@ body.high-contrast .deal-desc {
   color: var(--primary-text) !important;
 }
 
+body.high-contrast .deal-expiry {
+  color: var(--primary-text) !important;
+  background-color: var(--primary-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
 body.high-contrast .deal-footer {
   background-color: var(--primary-bg) !important;
   color: var(--primary-text) !important;
@@ -878,6 +884,46 @@ body.high-contrast .copy-btn.copied {
   background-color: var(--secondary-bg) !important;
   color: var(--secondary-text) !important;
   border: 2px solid var(--border-color) !important;
+}
+
+/* Informations secondaires dans les deal-cards */
+body.high-contrast .livraison-info {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .livraison-icon {
+  fill: var(--primary-text) !important;
+}
+
+body.high-contrast .platform {
+  color: var(--primary-text) !important;
+  border-left-color: var(--border-color) !important;
+}
+
+body.high-contrast .platform strong {
+  color: var(--primary-text) !important;
+  font-weight: bold !important;
+}
+
+body.high-contrast .posted-by {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .posted-by strong {
+  color: var(--primary-text) !important;
+  font-weight: bold !important;
+}
+
+body.high-contrast .action-btn {
+  color: var(--primary-text) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+body.high-contrast .action-btn:hover,
+body.high-contrast .action-btn:focus {
+  background-color: var(--hover-bg) !important;
+  color: var(--secondary-text) !important;
+  outline: 2px solid var(--accent-color) !important;
 }
 
 /* Images - améliorer la visibilité */
