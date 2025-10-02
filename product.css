@@ -40,7 +40,7 @@
 }
 
 .deal-description h2 {
-    color: #00b8d4;
+    color: #007a99;
     font-size: 22px;
     margin-bottom: 10px;
 }
@@ -59,7 +59,7 @@
 }
 
 .deal-comments h2 span {
-    color: #00b8d4;
+    color: #007a99;
 }
 
 .comment-box input {
@@ -112,7 +112,7 @@
 }
 
 .comment-actions a {
-    color: #00b8d4;
+    color: #007a99;
     text-decoration: none;
     margin-right: 8px;
 }
@@ -134,7 +134,7 @@
 }
 
 .price-history h2 span {
-    color: #00b8d4;
+    color: #007a99;
 }
 
 .price-history img {
@@ -154,7 +154,7 @@
 }
 
 .recommend h2 span {
-    color: #00b8d4;
+    color: #007a99;
 }
 
 /* Grille horizontale */
