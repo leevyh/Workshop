@@ -303,6 +303,7 @@
             platform: "Motoblouz",
             desc: "Noir/Rouge du S au XL",
             postedBy: "Crocrodeal",
+            dealUrl: "https://www.motoblouz.com/vente-blouson-moto-furygan-raptor-evo-3-188508.html"
           },
           {
             img: "images/prague.jpg",
@@ -316,6 +317,7 @@
             platform: "Raynair",
             desc: "Vol Direct Aller/Retour Paris (BVA) <<=>> Prague Václav-Havel (PRG) Du 9 Octobre au 15 Octobre (1 Bagage à main inclus).",
             postedBy: "Nico_Toz",
+            dealUrl: "https://www.ryanair.com/fr/fr/"
           },
           {
             img: "images/nike.jpg",
@@ -331,6 +333,7 @@
             delivery: "Livraison express",
             promoCode: "NIKE36",
             postedBy: "Rasta972",
+            dealUrl: "https://www.zalando.fr/nike-air-max-270-baskets-basses.html"
           },
           {
             img: "images/lossless.jpg",
@@ -344,6 +347,7 @@
             platform: "Steam",
             desc: "De retour à un prix bas avec les soldes d’automne de Steam. Un logiciel de frame generation qu’on ne présente plus…",
             postedBy: "caaptain",
+            dealUrl: "https://store.steampowered.com/app/993090/Lossless_Scaling/"
           },
         ];
 
@@ -406,7 +410,7 @@
                 </div>
               `
               : `
-                <button class="deal-btn">Voir le deal</button>
+                <a href="${deal.dealUrl}" target="_blank" rel="noopener noreferrer" class="deal-btn" aria-label="Voir l'offre ${deal.title} sur ${deal.platform}">Voir le deal</a>
               `;
                 
             card.innerHTML = `
@@ -422,7 +426,9 @@
                       </div>
                       ${deal.expiry ? `<span class="deal-expiry">${deal.expiry}</span>` : `<span class="deal-time">${deal.time}</span>`}
                   </div>
-                  <h3 class="deal-title">${deal.title}</h3>
+                  <h3 class="deal-title">
+                    <a href="product.html" class="deal-title-link" aria-label="Voir les détails de ${deal.title}">${deal.title}</a>
+                  </h3>
                   <div class="deal-price">
                     <span class="current-price">${deal.currentPrice}</span>
                     <span class="old-price">${deal.oldPrice}</span>
