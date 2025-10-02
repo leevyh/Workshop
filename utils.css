@@ -241,7 +241,7 @@ body {
   background-color: #fff;
   border-top: 1px solid #ddd;
   font-size: 0.9rem;
-  color: #555; /* Assombri pour meilleur contraste WCAG AA (ratio 6.8:1) */
+  color: #555;
   z-index: 1000;
   transition: all 0.3s ease;
   transform: translateY(100%);
@@ -297,7 +297,7 @@ body {
 
 .accessibility-label {
   font-size: 14px;
-  color: #555; /* Assombri pour meilleur contraste WCAG AA */
+  color: #555;
   font-weight: 500;
 }
 
@@ -318,7 +318,7 @@ body {
   border-radius: 4px;
   font-weight: bold;
   transition: all 0.2s ease;
-  color: #555; /* Assombri pour meilleur contraste WCAG AA */
+  color: #555;
   min-width: 36px;
 }
 
@@ -421,14 +421,14 @@ body.font-large .font-btn { font-size: 16px; }
 }
 
 .footer-links a {
-  color: #007a99; /* Bleu conforme WCAG AA (ratio 5.6:1) */
+  color: #007a99;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #005a66; /* Bleu foncé pour le hover (ratio 7.8:1) */
+  color: #005a66;
   text-decoration: underline;
 }
 
