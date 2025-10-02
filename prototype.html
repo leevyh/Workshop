@@ -495,6 +495,12 @@
         <a href="#">Politique de confidentialité</a>
       </div>
     </div>
+    <div class="footer-accessibility">
+      <div class="font-size-toggle">
+        <button onclick="setFontSize('normal')" class="font-btn active" data-size="normal" aria-label="Taille de police normale">Aa</button>
+        <button onclick="setFontSize('large')" class="font-btn" data-size="large" aria-label="Grande taille de police">Aa</button>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -540,6 +546,26 @@ function toggleHighContrast() {
   }
 }
 
+// Fonction pour définir la taille de police (version simplifiée)
+function setFontSize(size) {
+  const body = document.body;
+  
+  // Supprimer les anciennes classes de taille
+  body.classList.remove('font-normal', 'font-large');
+  
+  // Ajouter la nouvelle classe
+  body.classList.add(`font-${size}`);
+  
+  // Mettre à jour l'état actif dans les boutons
+  document.querySelectorAll('.font-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`[data-size="${size}"]`).classList.add('active');
+  
+  // Sauvegarder la préférence
+  localStorage.setItem('fontSize', size);
+}
+
 // Charger la préférence de contraste au chargement de la page
 window.addEventListener('DOMContentLoaded', function() {
   const savedContrast = localStorage.getItem('highContrast');
@@ -554,6 +580,10 @@ window.addEventListener('DOMContentLoaded', function() {
     contrastBtn.setAttribute('aria-pressed', 'false');
     contrastBtn.title = 'Activer le mode contraste élevé';
   }
+  
+  // Charger la taille de police sauvegardée
+  const savedFontSize = localStorage.getItem('fontSize') || 'normal';
+  setFontSize(savedFontSize);
 });
 </script>
 

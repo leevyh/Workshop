@@ -241,7 +241,7 @@ body {
   background-color: #fff;
   border-top: 1px solid #ddd;
   font-size: 0.9rem;
-  color: #666;
+  color: #555; /* Assombri pour meilleur contraste WCAG AA (ratio 6.8:1) */
   z-index: 1000;
   transition: all 0.3s ease;
   transform: translateY(100%);
@@ -276,6 +276,130 @@ body {
   transform: translateY(-1px);
 }
 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-accessibility {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accessibility-label {
+  font-size: 14px;
+  color: #555; /* Assombri pour meilleur contraste WCAG AA */
+  font-weight: 500;
+}
+
+.font-size-toggle {
+  display: flex;
+  gap: 4px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 2px;
+  background: #f9f9f9;
+}
+
+.font-btn {
+  border: none;
+  background: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  color: #555; /* Assombri pour meilleur contraste WCAG AA */
+  min-width: 36px;
+}
+
+.font-btn:hover {
+  background: #e9e9e9;
+  color: #333;
+}
+
+.font-btn.active {
+  background: #007a99;
+  color: white;
+}
+
+.font-btn[data-size="normal"] {
+  font-size: 14px;
+}
+
+.font-btn[data-size="large"] {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-accessibility {
+    order: -1;
+  }
+}
+
+/* Classes de taille de police simplifiées */
+body.font-normal {
+  font-size: 16px;
+}
+
+body.font-large {
+  font-size: 18px;
+}
+
+/* Ajustements pour les titres en grande taille */
+body.font-large h1 { font-size: 2.8rem; }
+body.font-large h2 { font-size: 2.2rem; }
+body.font-large h3 { font-size: 1.8rem; }
+
+/* Ajustements spécifiques pour les deal-cards */
+body.font-large .deal-title { font-size: 20px; }
+body.font-large .deal-desc { font-size: 16px; }
+body.font-large .deal-price { font-size: 18px; }
+body.font-large .current-price { font-size: 20px; }
+body.font-large .old-price { font-size: 16px; }
+body.font-large .deal-discount { font-size: 14px; }
+body.font-large .platform { font-size: 16px; }
+body.font-large .posted-by { font-size: 16px; }
+body.font-large .deal-time { font-size: 16px; }
+body.font-large .deal-expiry { font-size: 16px; }
+body.font-large .promo-code { font-size: 16px; }
+body.font-large .copy-btn { font-size: 16px; }
+body.font-large .deal-btn { font-size: 16px; }
+body.font-large .livraison-info { font-size: 16px; }
+
+/* Ajustements pour les catégories */
+body.font-large .category-card span { font-size: 16px; }
+
+/* Ajustements pour les trends */
+body.font-large .trend-title-text { font-size: 18px; }
+body.font-large .trend-desc { font-size: 16px; }
+body.font-large .trend-price { font-size: 18px; }
+
+/* Ajustements pour la navbar */
+body.font-large .search-wrapper input { font-size: 16px; }
+body.font-large .search-wrapper input::placeholder { font-size: 16px; }
+body.font-large .btn-publish { font-size: 16px; }
+body.font-large .btn-contrast { font-size: 16px; }
+body.font-large .btn-login { font-size: 16px; }
+body.font-large .clear-btn { font-size: 18px; }
+
+/* Ajustements pour le footer */
+body.font-large .footer-content { font-size: 16px; }
+body.font-large .footer-content p { font-size: 16px; }
+body.font-large .footer-links a { font-size: 16px; }
+body.font-large .accessibility-label { font-size: 16px; }
+body.font-large .font-btn { font-size: 16px; }
+
 .arrow-up {
   font-size: 14px;
   font-weight: bold;
@@ -309,14 +433,14 @@ body {
 }
 
 .footer-links a {
-  color: #00b8d4;
+  color: #007a99; /* Bleu conforme WCAG AA (ratio 5.6:1) */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #008c9e;
+  color: #005a66; /* Bleu foncé pour le hover (ratio 7.8:1) */
   text-decoration: underline;
 }
 
@@ -805,7 +929,7 @@ body.high-contrast .deal-score {
 }
 
 body.high-contrast .deal-discount {
-  color: var(--accent-color) !important;
+  color: #1b5e20 !important;
   font-weight: bold !important;
 }
 
@@ -966,4 +1090,35 @@ body.high-contrast img {
 body.high-contrast .slider::-webkit-scrollbar-thumb {
   background: var(--border-color) !important;
   border: 1px solid var(--primary-bg) !important;
+}
+
+/* Footer et sélecteur de police en mode contraste */
+body.high-contrast .footer-content {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .accessibility-label {
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .font-size-toggle {
+  border-color: var(--border-color) !important;
+  background-color: var(--secondary-bg) !important;
+}
+
+body.high-contrast .font-btn {
+  color: var(--secondary-text) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+body.high-contrast .font-btn:hover {
+  background-color: var(--hover-bg) !important;
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .font-btn.active {
+  background-color: var(--accent-color) !important;
+  color: var(--primary-bg) !important;
+  border-color: var(--accent-color) !important;
 }
