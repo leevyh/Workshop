@@ -12,34 +12,51 @@
 </head>
 
 <body>
+    <!-- Barre de navigation -->
     <nav class="navbar" role="navigation" aria-label="Menu principal">
         <a href="prototype.html" class="logo" aria-label="Accueil Dealabs">
-            <img src="images/dealabs_logo+txt.png" height="30" alt="Dealabs" class="logo-img" />
+        <img src="images/dealabs_logo+txt.png" height="30" alt="Dealabs" class="logo-img" />
         </a>
 
         <!-- Barre de recherche -->
         <form class="search-form" role="search" aria-label="Recherche">
-            <label for="search" class="visually-hidden">Rechercher</label>
-            <div class="search-wrapper">
-                <input type="text" id="search" placeholder="Rechercher un deal…" aria-label="Recherche" />
-                <button type="button" class="clear-btn" aria-label="Effacer la recherche">
-                    &times;
-                </button>
-            </div>
+        <label for="search" class="visually-hidden">Rechercher</label>
+        <div class="search-wrapper">
+            <input type="text" id="search" placeholder="Rechercher un deal…" aria-label="Recherche" />
+            <button type="button" class="clear-btn" aria-label="Effacer la recherche">
+            &times;
+            </button>
+        </div>
         </form>
 
         <!-- Boutons -->
         <div class="nav-buttons">
-            <button class="btn-publish">
-                <span class="icon">+</span>
-                <span class="text">Poster</span>
-            </button>
-            <button class="btn-login">
-                <span class="text">Se connecter</span>
-                <span class="icon">
-                    <img src="icons/register.png" height="18" alt="Register" class="register-logo" />
-                </span>
-            </button>
+        <button class="btn-contrast" onclick="toggleHighContrast()" aria-label="Basculer le mode contraste" title="Mode contraste élevé">
+            <svg class="contrast-icon sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="contrast-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+        <button class="btn-publish">
+            <span class="icon">+</span>
+            <span class="text">Poster</span>
+        </button>
+        <button class="btn-login">
+            <span class="text">Se connecter</span>
+            <span class="icon">
+            <img src="icons/register.png" height="18" alt="Register" class="register-logo" />
+            </span>
+        </button>
         </div>
     </nav>
 
