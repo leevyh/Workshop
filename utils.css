@@ -39,10 +39,10 @@ body {
 .search-form {
   position: absolute;
   justify-self: anchor-center;
-  width: calc(100% - 600px);
-  flex: 1 1 300px;
-  max-width: none;
-  min-width: 50px;
+  width: calc(100% - 700px);
+  flex: 1 1 250px;
+  max-width: 500px;
+  min-width: 200px;
 }
 
 .search-wrapper {
@@ -112,6 +112,19 @@ body {
     padding: 0.5rem;
     border-radius: 50%;
   }
+  
+  .search-form {
+    width: calc(100% - 400px);
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .search-form {
+    width: calc(100% - 300px);
+    max-width: 200px;
+    min-width: 150px;
+  }
 }
 
 .btn-publish {
@@ -152,6 +165,67 @@ body {
   background-color: #005f7a;
   outline: 2px solid #00b8d4;
   outline-offset: 2px;
+}
+
+.btn-contrast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 2px solid #666;
+  background-color: #f8f8f8;
+  color: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 44px;
+  height: 44px;
+  position: relative;
+}
+
+.btn-contrast:hover,
+.btn-contrast:focus {
+  background-color: #e0e0e0;
+  border-color: #333;
+  outline: 2px solid #00b8d4;
+  outline-offset: 2px;
+  transform: scale(1.05);
+}
+
+.btn-contrast.active {
+  background-color: #2c2c2c;
+  color: #fff;
+  border-color: #2c2c2c;
+}
+
+.btn-contrast.active:hover {
+  background-color: #1a1a1a;
+}
+
+.contrast-icon {
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+.sun-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.moon-icon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.btn-contrast.active .sun-icon {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+.btn-contrast.active .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 .icon {
@@ -537,4 +611,282 @@ body {
 
 .copy-btn.copied {
   background: #28a745;
+}
+
+/* ==========================================
+   MODE CONTRASTE ÉLEVÉ - WCAG AA Compliance
+   ========================================== */
+
+/* Mode contraste élevé - Variables principales */
+body.high-contrast {
+  --primary-bg: #ffffff;
+  --primary-text: #000000;
+  --secondary-bg: #000000;
+  --secondary-text: #ffffff;
+  --accent-color: #0000ff;
+  --border-color: #000000;
+  --hover-bg: #333333;
+}
+
+/* Corps et éléments de base */
+body.high-contrast {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Navigation */
+body.high-contrast .navbar {
+  background-color: var(--primary-bg) !important;
+}
+
+body.high-contrast .search-wrapper input {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+  border: 3px solid var(--border-color) !important;
+}
+
+body.high-contrast .clear-btn {
+  color: var(--primary-text) !important;
+}
+
+/* Boutons */
+body.high-contrast .btn-primary {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border: 3px solid var(--border-color) !important;
+}
+
+body.high-contrast .btn-primary:hover,
+body.high-contrast .btn-primary:focus {
+  background-color: var(--hover-bg) !important;
+  outline: 4px solid var(--accent-color) !important;
+}
+
+body.high-contrast .btn-publish {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+  border: 3px solid var(--border-color) !important;
+}
+
+body.high-contrast .btn-publish:hover,
+body.high-contrast .btn-publish:focus {
+  background-color: var(--hover-bg) !important;
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .btn-login {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border: 3px solid var(--border-color) !important;
+}
+
+body.high-contrast .btn-login:hover,
+body.high-contrast .btn-login:focus {
+  background-color: var(--hover-bg) !important;
+}
+
+/* Section Hero */
+body.high-contrast .hero {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .hero span {
+  color: var(--accent-color) !important;
+  font-weight: bold !important;
+}
+
+/* Sections */
+body.high-contrast .categories-section,
+body.high-contrast .deals-section {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .trend-section {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .trend-title {
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .trend-title span {
+  color: var(--secondary-text) !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+/* Catégories */
+body.high-contrast .category-card {
+  background-color: var(--primary-bg) !important;
+}
+
+body.high-contrast .category-card:hover,
+body.high-contrast .category-card:focus {
+  background-color: var(--hover-bg) !important;
+  color: var(--secondary-text) !important;
+}
+
+body.high-contrast .category-card span {
+  color: var(--primary-text) !important;
+  font-weight: bold !important;
+}
+
+body.high-contrast .category-card:hover span,
+body.high-contrast .category-card:focus span {
+  color: var(--secondary-text) !important;
+}
+
+/* Cartes de deals */
+body.high-contrast .trend-card,
+body.high-contrast .deal-card {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Contenu des deal-cards */
+body.high-contrast .deal-info {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-header {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-time {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-title {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-description {
+  color: var(--primary-text) !important;
+}
+
+/* Autres éléments des deal-cards */
+body.high-contrast .deal-score {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-discount {
+  color: var(--accent-color) !important;
+  font-weight: bold !important;
+}
+
+body.high-contrast .deal-desc {
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-footer {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .deal-expiry {
+  color: var(--primary-text) !important;
+}
+
+/* Boutons dans les deal-cards */
+body.high-contrast .deal-btn {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+body.high-contrast .deal-btn:hover,
+body.high-contrast .deal-btn:focus {
+  background-color: var(--hover-bg) !important;
+  outline: 2px solid var(--accent-color) !important;
+}
+
+/* Prix dans les deal-cards */
+body.high-contrast .current-price {
+  color: var(--secondary-bg) !important;
+  font-weight: 900 !important;
+}
+
+body.high-contrast .old-price {
+  color: var(--border-color) !important;
+}
+
+/* Titres avec span coloré */
+body.high-contrast .categories-section h2 span,
+body.high-contrast .deals-section h2 span {
+  color: var(--accent-color) !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+/* Footer */
+body.high-contrast .footer {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border-top: 3px solid var(--border-color) !important;
+}
+
+body.high-contrast .footer-toggle {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border: 3px solid var(--border-color) !important;
+}
+
+body.high-contrast .footer-links a {
+  color: var(--secondary-text) !important;
+  border-bottom: 2px solid var(--secondary-text) !important;
+  text-decoration: none !important;
+}
+
+body.high-contrast .footer-links a:hover,
+body.high-contrast .footer-links a:focus {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+  outline: 2px solid var(--accent-color) !important;
+}
+
+/* Boutons promo et codes */
+body.high-contrast .promo-container {
+  background-color: var(--primary-bg) !important;
+  border: 3px solid var(--border-color) !important;
+  color: var(--primary-text) !important;
+}
+
+body.high-contrast .promo-code {
+  color: var(--primary-text) !important;
+  background-color: var(--primary-bg) !important;
+  font-weight: bold !important;
+}
+
+body.high-contrast .copy-btn {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+body.high-contrast .copy-btn:hover,
+body.high-contrast .copy-btn:focus {
+  background-color: var(--hover-bg) !important;
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px;
+}
+
+body.high-contrast .copy-btn.copied {
+  background-color: var(--secondary-bg) !important;
+  color: var(--secondary-text) !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+/* Images - améliorer la visibilité */
+body.high-contrast img {
+  filter: contrast(1.2) !important;
+}
+
+/* Scrollbar en mode contraste */
+body.high-contrast .slider::-webkit-scrollbar-thumb {
+  background: var(--border-color) !important;
+  border: 1px solid var(--primary-bg) !important;
 }
