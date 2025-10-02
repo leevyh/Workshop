@@ -81,7 +81,7 @@ body {
 .clear-btn:hover,
 .clear-btn:focus {
   color: #333;
-  outline: 2px solid #00b8d4;
+  outline: 2px solid #007a99;
   outline-offset: 2px;
 }
 
@@ -132,9 +132,9 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #00b8d4;
+  border: 2px solid #007a99;
   background-color: transparent;
-  color: #00b8d4;
+  color: #007a99;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 500;
@@ -142,8 +142,8 @@ body {
 
 .btn-publish:hover,
 .btn-publish:focus {
-  background-color: rgba(0, 184, 212, 0.1);
-  outline: 2px solid #00b8d4;
+  background-color: rgba(0, 122, 153, 0.1);
+  outline: 2px solid #007a99;
   outline-offset: 2px;
 }
 
@@ -162,8 +162,8 @@ body {
 
 .btn-login:hover,
 .btn-login:focus {
-  background-color: #005f7a;
-  outline: 2px solid #00b8d4;
+  background-color: #005a66;
+  outline: 2px solid #007a99;
   outline-offset: 2px;
 }
 
@@ -443,7 +443,7 @@ body {
 .deal-title {
     font-size: 18px;
     font-weight: bold;
-    color: #00b8d4;
+    color: #007a99;
 }
 
 .deal-title-link {
@@ -454,7 +454,7 @@ body {
 
 .deal-title-link:hover,
 .deal-title-link:focus {
-    color: #008c9e;
+    color: #005a66;
     text-decoration: underline;
 }
 
@@ -572,20 +572,24 @@ body {
 
 /* Boutons principaux */
 .deal-btn {
-    background: #00b8d4;
+    background: #007a99;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 14px;
+    line-height: 1.2;
     text-decoration: none;
     display: inline-block;
     transition: background 0.2s;
+    min-height: 44px;
+    box-sizing: border-box;
 }
 
 .deal-btn:hover {
-    background: #0093a0;
+    background: #005a66;
 }
 
 /* Code promo */
@@ -593,8 +597,8 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #e6f9fc;
-  border: 2px dashed #00b8d4;
+  background: #e6f7f9;
+  border: 2px dashed #007a99;
   border-radius: 8px;
 }
 
@@ -602,23 +606,27 @@ body {
   font-family: monospace;
   font-size: 16px;
   font-weight: bold;
-  color: #00b8d4;
+  color: #007a99;
   margin-left: 15px;
 }
 
 .copy-btn {
-  background: #00b8d4;
+  background: #007a99;
   color: #fff;
   border: none;
   border-radius: 6px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   cursor: pointer;
   transition: 0.2s;
   font-weight: bold;
+  font-size: 14px;
+  line-height: 1.2;
+  min-height: 44px;
+  box-sizing: border-box;
 }
 
 .copy-btn:hover {
-  background: #0093a0;
+  background: #005a66;
 }
 
 .copy-btn.copied {
@@ -635,7 +643,7 @@ body.high-contrast {
   --primary-text: #000000;
   --secondary-bg: #000000;
   --secondary-text: #ffffff;
-  --accent-color: #0000ff;
+  --accent-color: #007a99;
   --border-color: #000000;
   --hover-bg: #333333;
 }
